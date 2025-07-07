@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['grenade', 'knife', 'pistol', 'rifle']
+
+roboflow:
+  workspace: ashish-cuamw
+  project: test-y7rj3
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ashish-cuamw/test-y7rj3/dataset/1

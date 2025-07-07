@@ -1,4 +1,5 @@
-[yolo_detection_readme.md](https://github.com/user-attachments/files/21095277/yolo_detection_readme.md)Detección de Objetos con YOLO: Modelos Small, Nano y YOLOv12
+[yolo_detection_readme.md](https://github.com/user-attachments/files/21095277/yolo_detection_readme.md)
+Detección de Objetos con YOLO: Modelos Small, Nano y YOLOv12
 
 Se evaluaron los modelos en base a:
 [Uploading yolo_detection_read# Detección de Objetos con YOLO: Modelos Small, Nano y YOLOv12
@@ -86,9 +87,13 @@ bashpython detect.py --weights <modelo.pth> --source <ruta_a_video_o_imagen> --i
 ## Conclusiones
 
 -Los modelos ligeros como Nano y Small permiten realizar detecciones en tiempo real en hardware con recursos limitados, aunque con una leve disminución en precisión.
+
 -La elección del modelo adecuado depende del balance entre velocidad y precisión que requiera tu aplicación.
+
 -La versión YOLOv8s combina velocidad y precisión de una manera muy favorable para tareas en tiempo real.
+
 -Es importante evaluar el hardware disponible y los requisitos específicos del proyecto antes de seleccionar el modelo.
+
 -La integración de estos modelos en sistemas embebidos y aplicaciones móviles puede facilitar detecciones eficientes sin -necesidad de hardware potente.
 
 ## Referencias

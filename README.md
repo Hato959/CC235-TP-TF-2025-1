@@ -1,105 +1,26 @@
-[yolo_detection_readme.md](https://github.com/user-attachments/files/21095277/yolo_detection_readme.md)
-Detección de Objetos con YOLO: Modelos Small, Nano y YOLOv12
+Objetivo del trabajo: 
+El objetivo es crear un sistema para la identificación automática de armas (como pistolas, cuchillos, rifles o granadas) utilizando técnicas de procesamiento de imágenes y aprendizaje automático. Aunque la idea general contempla la integración en sistemas de videovigilancia, en este proyecto en particular solo se trabajó con imágenes estáticas debido a la disponibilidad y facilidad de anotación de datos.
 
-Se evaluaron los modelos en base a:
-[Uploading yolo_detection_read# Detección de Objetos con YOLO: Modelos Small, Nano y YOLOv12
+Nombre de los alumnos participantes: 
+Francesca Nicole Bances Torres
+Marcos Aaron Bedia Torres
+Lizbeth Teresita Olivera Alvarez
 
-Este proyecto presenta una comparación y análisis de diferentes modelos de detección de objetos basados en YOLO (You Only Look Once). Se enfocan en las versiones Nano y Small de YOLOv5 y YOLOv8, además del modelo YOLOv12, con énfasis en métricas, velocidad y aplicaciones en tiempo real.
+Breve descripción del dataset:
+El dataset a utilizar es “Test Computer Vision Project”, disponible en la plataforma Roboflow. Este conjunto de datos fue diseñado para proyectos de visión por computadora, específicamente la detección de armas como granadas, rifles, pistolas y cuchillos. 
+Dataset: Test Computer Vision Project
+Origen: Roboflow Universe
+Cantidad total de imágenes: 4666
+Cantidad de imágenes por clase: 
+Grenade: 1413
+Rifle: 1226
+Pistol: 1010
+Knife: 845
 
-## Tabla de Contenidos
-
-- [Introducción](#introducción)
-- [Objetivo](#objetivo)
-- [Modelos Comparados](#modelos-comparados)
-- [Métricas y Resultados](#métricas-y-resultados)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Cómo Ejecutar el Proyecto](#cómo-ejecutar-el-proyecto)
-- [Conclusiones](#conclusiones)
-- [Referencias](#referencias)
-
-## Introducción
-
-Este proyecto realiza una comparación entre diferentes versiones ligeras de los modelos YOLO (Nano y Small) y el modelo YOLOv12, con el objetivo de evaluar su desempeño en tareas de detección de objetos en tiempo real, particularmente en tareas específicas como la detección de armas. La evaluación se realiza a través de métricas clave como precisión (Precision), recall, mAP@0.5 y mAP@0.5:0.95, además de analizar la velocidad de inferencia.
-
-## Objetivo
-
-- Comparar el rendimiento de los modelos Nano (n) y Small (s) de YOLOv5 y YOLOv8.
-- Incluir el análisis del modelo YOLOv12 como una opción ligera y rápida.
-- Determinar cuál modelo es más adecuado para aplicaciones en tiempo real con recursos limitados.
-- Proporcionar una referencia clara para la selección de modelos en diferentes escenarios.
-
-## Modelos Comparados
-
-| Modelo | Tamaño (px) | Precisión (mAP@0.5:0.95) | Velocidad (ms) | Ventajas | Desventajas |
-|--------|-------------|---------------------------|----------------|----------|-------------|
-| YOLOv5n (Nano) | 640x640 | 0.42625 | ~3 ms | Muy rápido, bajo consumo, ideal para hardware restringido | Menor precisión, menos robusto en escenarios complejos |
-| YOLOv8n (Nano) | 640x640 | 0.54554 | ~1.2 ms | Alta velocidad, arquitectura moderna | Menor precisión en detección de objetos pequeños |
-| YOLO12n (futuro, ligera) | 640x640 | 0.53217 | ~2.6 ms | Muy rápida, ligera | Precisión menor, menos robustez frente a escenas complejas |
-| YOLOv5s (Small) | 640x640 | 0.42625 | ~5.5 ms | Buen equilibrio velocidad y precisión | Requiere más recursos que Nano |
-| YOLOv8s (Small) | 640x640 | 0.54554 | ~1.2 ms | Excelente balance velocidad y precisión | Mayor requerimiento de recursos |
-
-## Métricas y Resultados
-
-Se evaluaron los modelos en base a:
-
-- **Precisión (Precision):** Capacidad de NO generar falsos positivos.
-- **Recall:** Capacidad de detectar la mayoría de los objetos presentes.
-- **mAP@0.5:** Métrica promedio de precisión en diferentes objetos.
-- **mAP@0.5:0.95:** Evaluación más exigente, considerando diferentes umbrales.
-
-Los resultados muestran que modelos Nano y Small ofrecen un excelente balance para aplicaciones en tiempo real, siendo ideales para hardware con limitaciones de recursos.
-
-## Tecnologías Utilizadas
-
-- Python 3.x: Lenguaje de programación principal para la implementación y evaluación de modelos.
-- PyTorch: Framework de deep learning utilizado para entrenar y cargar modelos YOLO.
-- Ultralytics YOLO: Implementación oficial de los modelos YOLOv5 y YOLOv8.
-- OpenCV: Biblioteca para procesamiento de imágenes y videos.
-- NumPy: Biblioteca para procesamiento numérico y manejo de matrices.
-- Matplotlib: Para graficar métricas y resultados de evaluación.
-- CUDA/cuDNN: Para aceleración con GPU en entrenamiento y evaluación (opcional).
-
-## Cómo Ejecutar el Proyecto
-Cómo Ejecutar el Proyecto
-
-Clona el repositorio:
-
-bashgit clone <URL_del_repositorio>
-cd <nombre_del_directorio>
-
-Crea un entorno virtual (opcional pero recomendable):
-
-bashpython -m venv venv
-source venv/bin/activate  # En Linux/Mac
-venv\Scripts\activate     # En Windows
-
-Instala las dependencias:
-
-bashpip install -r requirements.txt
-
-Descarga o predefine los modelos YOLO (nano, small, etc.)
-Asegúrate de tener los archivos de peso (.pt) en tu directorio.
-Ejecuta la detección o evaluación:
-
-bashpython detect.py --weights <modelo.pth> --source <ruta_a_video_o_imagen> --img-size 640
-(Reemplaza <modelo.pth> por el modelo que quieres usar y <ruta_a_video_o_imagen> por la fuente de entrada.)
-
-## Conclusiones
-
--Los modelos ligeros como Nano y Small permiten realizar detecciones en tiempo real en hardware con recursos limitados, aunque con una leve disminución en precisión.
-
--La elección del modelo adecuado depende del balance entre velocidad y precisión que requiera tu aplicación.
-
--La versión YOLOv8s combina velocidad y precisión de una manera muy favorable para tareas en tiempo real.
-
--Es importante evaluar el hardware disponible y los requisitos específicos del proyecto antes de seleccionar el modelo.
-
--La integración de estos modelos en sistemas embebidos y aplicaciones móviles puede facilitar detecciones eficientes sin -necesidad de hardware potente.
-
-## Referencias
-
--YOLOv5 GitHub
-
--YOLOv8 GitHub
-
--Documentación Ultralytics YOLO
+Conclusiones: 
+- El desarrollo y entrenamiento de modelos de detección de armas mediante visión por computadora demuestra ser una solución efectiva y viable para mejorar los sistemas de seguridad en diversos escenarios.
+- La precisión y fiabilidad del sistema dependen en gran medida de la calidad y cantidad de los datos utilizados en el entrenamiento, destacando la importancia de contar con un conjunto de datos representativo y bien anotado.
+- La implementación de modelos como YOLOv 8s permite una detección en tiempo real, contribuyendo significativamente a la prevención y respuesta rápida ante situaciones de riesgo en ámbitos de seguridad pública y vigilancia.
+- La comparación entre las versiones Nano y Small de los modelos YOLO permitió identificar que YOLOv8s ofrece el mejor equilibrio entre precisión, velocidad y eficiencia, cumpliendo con los requerimientos del sistema propuesto. Aunque modelos como YOLOv8n destacan por su rapidez y bajo consumo de recursos, su menor precisión representa un riesgo en contextos sensibles como la detección de armas. Por lo tanto, YOLOv8s fue seleccionado como el modelo más adecuado, garantizando una detección confiable y en tiempo real en dispositivos con capacidad moderada.
+- YOLOv8s demostró ser el modelo más adecuado para el contexto del problema, dado que obtuvo el mayor Recall (0.72473), métrica prioritaria en tareas de detección de armas. Esto significa que tiene mayor capacidad para detectar armas reales, minimizando los falsos negativos, los cuales representan un riesgo significativo para la seguridad.
+- En las imágenes comparativas, se observó que YOLOv8s realiza detecciones más precisas y con mayor confianza, aunque aún presenta algunos falsos positivos. Sin embargo, estos son aceptables dentro del contexto del problema, ya que pueden corregirse manualmente sin comprometer la seguridad.Por lo tanto, YOLOv8s se posiciona como el modelo más confiable y efectivo para la tarea de detección de armas, considerando tanto el análisis cuantitativo de métricas como la evaluación cualitativa de las predicciones.
